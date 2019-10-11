@@ -40,6 +40,8 @@ sudo apt-get -o Dpkg::Options::="--force-confold" --force-yes -y install docker-
 sudo python setup-docker.py
 sudo cat /etc/docker/daemon.json 
 sudo systemctl restart docker
+sudo systemctl status docker.service
+sudo journalctl -xe
 echo "Docker Version:"
 docker version
 echo "Docker Info:"
