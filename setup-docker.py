@@ -52,7 +52,7 @@ def get_daemon_content():
     return data
 
 
-def add_content(data: dict):
+def add_content(data):
     for config in DOCKER_OPTS.items():
         # config will be a tuple of key, value
         # ('hosts', ['tcp://0.0.0.0:4243', 'unix:///var/run/docker.sock'])
