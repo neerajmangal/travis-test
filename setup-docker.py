@@ -72,7 +72,9 @@ def write_to_daemon_conf(data):
 
 if __name__ == "__main__":
     current_data = get_daemon_content()
+    print(current_data)
     updated_data = add_content(current_data)
+    print(updated_data)
     write_to_daemon_conf(updated_data)
     print("Successfully Configured Docker daemon.json")
 
