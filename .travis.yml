@@ -1,0 +1,10 @@
+language: python
+
+dist: xenial
+
+services:
+  - docker
+
+script:
+  - ./docker.sh
+  - sudo cat /etc/docker/daemon.json
