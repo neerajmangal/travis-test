@@ -38,7 +38,7 @@ sudo apt-get update
 sudo apt-get -o Dpkg::Options::="--force-confold" --force-yes -y install docker-ce=18.06.3~ce~3-0~ubuntu containerd.io
 sudo python setup-docker.py
 sudo cat /etc/docker/daemon.json 
-sudo service docker restart
+sudo systemctl restart docker
 echo "Docker Version:"
 docker version
 echo "Docker Info:"
