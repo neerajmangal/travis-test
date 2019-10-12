@@ -19,13 +19,8 @@ set -x
 
 # Build script for Travis-CI.
 
-SECONDS=0
-SCRIPTDIR=$(cd "$(dirname "$0")" && pwd)
-ROOTDIR="$SCRIPTDIR/.."
-echo "SCRIPTDIR"
-echo $SCRIPTDIR
-echo "ROOTDIR"
-echo $ROOTDIR
+BASEDIR=$(dirname "$0")
+echo "$BASEDIR"
 
 sudo gpasswd -a travis docker
 sudo usermod -aG docker travis
@@ -49,8 +44,8 @@ sudo add-apt-repository \
 sudo apt-get update
 sudo apt-get -o Dpkg::Options::="--force-confold" --force-yes -y install docker-ce=18.06.3~ce~3-0~ubuntu containerd.io
 sudo mkdir -p /etc/systemd/system/docker.service.d
-sudo cp ./scripts/docker.conf /etc/systemd/system/docker.service.d/docker.conf
-sudo python ./scripts/setup-docker.py
+sudo cp $BASEDIR/docker.conf /etc/systemd/system/docker.service.d/docker.conf
+sudo python $BASEDIR/setup-docker.py
 sudo cat /etc/docker/daemon.json 
 sudo systemctl daemon-reload
 sudo systemctl restart docker
