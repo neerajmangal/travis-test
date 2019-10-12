@@ -16,6 +16,17 @@
 # limitations under the License.
 #
 set -x
+
+# Build script for Travis-CI.
+
+SECONDS=0
+SCRIPTDIR=$(cd "$(dirname "$0")" && pwd)
+ROOTDIR="$SCRIPTDIR/.."
+echo "SCRIPTDIR"
+echo $SCRIPTDIR
+echo "ROOTDIR"
+echo $ROOTDIR
+
 sudo gpasswd -a travis docker
 sudo usermod -aG docker travis
 #sudo -E bash -c 'echo '\''DOCKER_OPTS="-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock --storage-driver=overlay --userns-remap=default"'\'' > /etc/default/docker'
@@ -44,7 +55,6 @@ sudo cat /etc/docker/daemon.json
 sudo systemctl daemon-reload
 sudo systemctl restart docker
 sudo systemctl status docker.service
-sudo journalctl -xe
 echo "Docker Version:"
 docker version
 echo "Docker Info:"
