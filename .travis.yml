@@ -6,5 +6,5 @@ services:
   - docker
 
 script:
-  - ./docker.sh
+  - ./scripts/docker.sh
   - sudo cat /etc/docker/daemon.json
